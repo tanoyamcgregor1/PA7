@@ -1,0 +1,36 @@
+# Name: Tanoya McGregor
+# Course: COP2073C
+# Assignment: PA7
+# Date: July 5, 2026
+
+# Given distribution values
+mean_value <- 10
+variance_value <- 2
+sd_value <- sqrt(variance_value)
+
+# Part 1: Probability blade is between 9.5 and 11 mm
+lower_bound <- 9.5
+upper_bound <- 11
+
+prob_between <- pnorm(upper_bound, mean_value, sd_value) -
+  pnorm(lower_bound, mean_value, sd_value)
+
+cat("Probability blade is between 9.5 and 11 mm:", prob_between, "\n")
+
+# Part 2: Standardize 9.5 and 11, then find probability using Z-scores
+z_lower <- (lower_bound - mean_value) / sd_value
+z_upper <- (upper_bound - mean_value) / sd_value
+
+prob_z <- pnorm(z_upper) - pnorm(z_lower)
+
+cat("Probability from Z-scores for 9.5 and 11 mm:", prob_z, "\n")
+
+# Part 3: Find blade length below the shortest 2.5 percent
+shortest_2_5 <- qnorm(0.025, mean_value, sd_value)
+
+cat("Blade length below shortest 2.5%:", shortest_2_5, "mm\n")
+
+# Part 4: Standardize the answer from Part 3
+z_shortest <- (shortest_2_5 - mean_value) / sd_value
+
+cat("Z-score of shortest 2.5% blade:", z_shortest, "\n")
